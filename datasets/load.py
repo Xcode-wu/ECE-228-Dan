@@ -13,7 +13,7 @@ ROOT_DIR = os.path.abspath("../")
 
 # Import v2c utils
 sys.path.append(ROOT_DIR)  # To find local version of the library
-import v2c.utils as utils
+import main.utils as utils
 
 # ----------------------------------------
 # Functions for IIT-V2C Database Integration

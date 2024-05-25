@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import models
-from v2c.backbone import resnet
+from main.backbone import resnet
 
 # ----------------------------------------
 # Functions for Video Feature Extraction
