@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import multiprocessing
+from main.image_encoder_selection import ImageEncoderSelection
 
 class Config(object):
     NAME = None  # Override in sub-classes
@@ -14,7 +15,7 @@ class Config(object):
     DISPLAY_EVERY = 20
     SAVE_EVERY = 5
 
-    BACKBONE = {'resnet50': 2048}
+    BACKBONE = {ImageEncoderSelection: 2048}
     UNITS = 512
     EMBED_SIZE = 512
     VOCAB_SIZE = None

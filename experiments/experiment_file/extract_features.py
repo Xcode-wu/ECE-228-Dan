@@ -6,6 +6,8 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
 
+from main.image_encoder_selection import ImageEncoderSelection
+
 PROJECT_ROOT = os.path.abspath("../../")
 
 sys.path.append(PROJECT_ROOT)
@@ -49,7 +51,7 @@ def extract_features(dataset_dir, dataset, model_name):
 
 def main():
     config = FeatureExtractionConfig()
-    model_names = ['resnet50']
+    model_names = [ImageEncoderSelection]
 
     annotation_files = ['train.txt', 'test.txt']
     for annotation_file in annotation_files:
