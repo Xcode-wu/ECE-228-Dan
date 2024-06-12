@@ -9,59 +9,6 @@ from torchvision import models
 from main.backbone import resnet
 import sys
 
-# ----------------------------------------
-# Functions for Video Feature Extraction
-# ----------------------------------------
-
-class CNNWrapper(nn.Module):
-    """Wrapper module to extract features from image using
-    pre-trained CNN.
-    """
-    def __init__(self,
-                 backbone,
-                 checkpoint_path):
-        super(CNNWrapper, self).__init__()
-        self.backbone = backbone
-        self.model = self.init_backbone(checkpoint_path)
-
-    def forward(self,
-                x):
-        with torch.no_grad():
-            x = self.model(x)
-        x = x.reshape(x.size(0), -1)
-        return x
-
-    def init_backbone(self,
-                      checkpoint_path):
-        """Helper to initialize a pretrained pytorch model.
-        """
-        if self.backbone == 'resnet50':
-            model = resnet.resnet50(pretrained=False)   # Use Caffe ResNet instead
-            model.load_state_dict(torch.load(checkpoint_path))
-
-        elif self.backbone == 'resnet101':
-            model = resnet.resnet101(pretrained=False)
-            model.load_state_dict(torch.load(checkpoint_path))
-
-        elif self.backbone == 'resnet152':
-            model = resnet.resnet152(pretrained=False)
-            model.load_state_dict(torch.load(checkpoint_path))
-
-        elif self.backbone == 'vgg16':
-            model = models.vgg16(pretrained=True)
-
-        elif self.backbone == 'vgg19':
-            model = models.vgg19(pretrained=True)
-
-        # Remove the last classifier layer
-        modules = list(model.children())[:-1]
-        model = nn.Sequential(*modules)
-        
-        return model
-
-# ----------------------------------------
-# Transformer Encoder and Decoder for V2CNet
-# ----------------------------------------
 class PositionalEncoding(nn.Module):
 
     def __init__(self, d_model: int, 
