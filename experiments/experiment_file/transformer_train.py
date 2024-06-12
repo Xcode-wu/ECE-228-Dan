@@ -9,7 +9,7 @@ from torch.utils import data
 PROJECT_ROOT = os.path.abspath("../../")
 
 sys.path.append(PROJECT_ROOT)
-from main.model import *
+from main.transformer_model import *
 from main import utils
 from main.config import *
 from datasets import load
