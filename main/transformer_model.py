@@ -123,7 +123,7 @@ class CommandLoss(nn.Module):
         return self.cross_entropy(input, target)
 
 
-class Video2Command():
+class Video2Command_w_transformer():
     """Train/Eval inference class for V2C model.
     """
     def __init__(self,
