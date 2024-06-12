@@ -229,7 +229,7 @@ class Video2Command_w_transformer():
 
             S_pred = self.predict(Xv, vocab)
             # print(S_true[:,0])
-            print("prediction completed")
+            # print("prediction completed")
             tgt_input = S_true[:-1, :]
             tgt_output = S_true[1:, :]
 
@@ -258,7 +258,7 @@ class Video2Command_w_transformer():
 
         y_pred = torch.cat(y_pred, dim=0)
         y_true = torch.cat(y_true, dim=0)
-        print("Evaluation loss: ", losses.item() / len(list(test_loader)))
+        print("Evaluation loss: ", losses / len(list(test_loader)))
         return y_pred.cpu().numpy(), y_true.cpu().numpy(), losses / len(list(test_loader))
 
     def predict(self, 
