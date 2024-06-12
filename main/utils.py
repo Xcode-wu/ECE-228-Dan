@@ -10,16 +10,17 @@ else:
 import numpy as np
 
 class Vocabulary(object):
-    def __init__(self, start_word='<sos>', end_word='<eos>', unk_word=None):
+    def __init__(self, pad_word='<pad>', start_word='<sos>', end_word='<eos>', unk_word=None):
         self.word2idx = {}
         self.idx2word = {}
         self.idx = 0
         self.word_counts = {}
 
+        self.pad_word = pad_word
         self.start_word = start_word
         self.end_word = end_word
         self.unk_word = unk_word
-        for special_token in [start_word, end_word, unk_word]:
+        for special_token in [pad_word, start_word, end_word, unk_word]:
             if special_token is not None:
                 self.add_word(special_token)
 
