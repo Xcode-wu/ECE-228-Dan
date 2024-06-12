@@ -254,7 +254,7 @@ class Video2Command_w_transformer():
             y_true.append(S_true)
 
             # Calculate loss
-            losses += loss
+            losses += loss.item()
 
         y_pred = torch.cat(y_pred, dim=0)
         y_true = torch.cat(y_true, dim=0)
