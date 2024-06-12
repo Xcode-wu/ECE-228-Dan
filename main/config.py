@@ -8,6 +8,11 @@ class Config(object):
     MODE = 'train'  # Mode (train/eval)
     ROOT_DIR = None  # Root project directory
 
+    # Model configuration
+    N_HEAD = 8
+    N_ENCODING_LAYER = 3
+    N_DECODING_LAYER = 3
+
     LEARNING_RATE = 1e-4
     BATCH_SIZE = 16
     NUM_EPOCHS = 150
@@ -15,7 +20,10 @@ class Config(object):
     DISPLAY_EVERY = 20
     SAVE_EVERY = 5
 
-    BACKBONE = {IMAGE_ENCODER_SELECTION: 2048}
+    N_FEATURES = 2048
+    BACKBONE = {'resnet50': N_FEATURES}
+    # BACKBONE = {IMAGE_ENCODER_SELECTION: 2048} # uncomment this for LSTM and comment out the earlier one
+    
     UNITS = 512
     EMBED_SIZE = 512
     VOCAB_SIZE = None
