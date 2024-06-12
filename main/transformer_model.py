@@ -208,6 +208,7 @@ class Video2Command_w_transformer():
             if (epoch + 1) % self.config.SAVE_EVERY == 0:
                 self.save_weights(epoch + 1)
                 self.evaluate(train_loader, self.vocab)
+                self.transformerV2C.train()
         return
 
     def evaluate(self,
@@ -227,7 +228,7 @@ class Video2Command_w_transformer():
             S_true = S_true.permute(1, 0)
 
             S_pred = self.predict(Xv, vocab)
-            print(S_true[:,0])
+            # print(S_true[:,0])
             print("prediction completed")
             tgt_input = S_true[:-1, :]
             tgt_output = S_true[1:, :]
