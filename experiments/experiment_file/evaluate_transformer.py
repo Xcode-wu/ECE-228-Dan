@@ -41,7 +41,7 @@ checkpoint_files = sorted(glob.glob(os.path.join(config.CHECKPOINT_PATH, 'saved'
 for checkpoint_file in checkpoint_files:
     epoch = int(checkpoint_file.split('_')[-1][:-4])
     v2c_model.load_weights(checkpoint_file)
-    predicted, actual = v2c_model.evaluate(test_loader, vocab)
+    predicted, actual, loss = v2c_model.evaluate(test_loader, vocab)
 
     with open(os.path.join(config.CHECKPOINT_PATH, 'prediction', 'prediction_{}.txt'.format(epoch)), 'w') as f:
         for i in range(len(predicted)):
