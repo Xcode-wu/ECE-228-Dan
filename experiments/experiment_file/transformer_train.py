@@ -30,7 +30,7 @@ train_dataset = load.FeatureDataset(clips, targets)
 train_loader = data.DataLoader(train_dataset, batch_size=config.BATCH_SIZE, shuffle=True, num_workers=config.WORKERS)
 bias_vector = vocab.get_bias_vector() if config.USE_BIAS_VECTOR else None
 
-v2c_model = TransformerV2C(config)
+v2c_model = Video2Command_w_transformer(config, vocab)
 v2c_model.build(bias_vector)
 
 with open(os.path.join(config.CHECKPOINT_PATH, 'vocab.pkl'), 'wb') as f:
